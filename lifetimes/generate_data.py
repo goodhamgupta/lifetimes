@@ -331,3 +331,33 @@ def beta_geometric_beta_binom_model(N, alpha, beta, gamma, delta, size=1):
             alive = random.binomial(1, theta) == 0
         df.iloc[i] = len(times), times[-1] + 1 if len(times) != 0 else 0, N[i], p, theta, alive, i
     return df
+
+
+def pareto_abe_model(T, r, alpha, s, beta, size=1):
+    """
+    Generate artificial data according to the Pareto Abe model.
+
+    See [2]_ for model details.
+
+    Parameters
+    ----------
+    T: array_like
+        The length of time observing new customers.
+    r, alpha, s, beta: float
+        Parameters in the model. See [1]_
+    size: int, optional
+        The number of customers to generate
+
+    Returns
+    -------
+    :obj: DataFrame
+        with index as customer_ids and the following columns:
+        'frequency', 'recency', 'T', 'lambda', 'mu', 'alive', 'customer_id'
+
+    References
+    ----------
+    .. [2]: Fader, Peter S. and Bruce G. S. Hardie (2005), "A Note on Deriving the Pareto/NBD Model
+       and Related Expressions," <http://brucehardie.com/notes/009/>.
+
+    """
+    pass
